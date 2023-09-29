@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="myclass">
+    </div>
+    <br>
+    <div class="row">
+        <div *ngFor = "let prodcut of products; let productId = index" class="col-sm">
+            <div class="card">
+                <a [routerLink]="[productId]">
+                    <img class="card-img-top" src="{{ prodcut.coverImage }}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-title">{{ prodcut.name }}</p>
+                        <p class="card-text">{{ prodcut.description }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
