@@ -1,7 +1,12 @@
-import { products } from 'src/app/products';
+
+
+import * as e from 'express';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { products } from '../../products';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +16,16 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
   products: any;
 
-  constructor( private route:ActivatedRoute ) { }
+  constructor( private productService: ProductService ) { }
 
   ngOnInit(): void {
-    this.products = products;
-  }
+    const productsObervable = this.productService.getProducts()
+    productsObervable.subscribe(
+      (data) => {
+        this.products = data
+      },
+      (err) => { console.error('次のデータが出力されました：' + err) }
+    )
+ }
 
 }
