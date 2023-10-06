@@ -3,16 +3,16 @@
     </div>
     <br>
     <div class="row">
-        <div *ngFor = "let prodcut of products; let productId = index" class="col-sm">
-            <div class="card">
-                <a [routerLink]="[productId]">
-                    <img class="card-img-top" src="{{ prodcut.coverImage }}" alt="Card image cap">
+        <div *ngFor = "let product of products; let productId = index" class="col-sm">
+            <a [routerLink]="[ product._id ]">
+                <div class="card">
+                    <img src="{{ product.coverImage }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-title">{{ prodcut.name }}</p>
-                        <p class="card-text">{{ prodcut.description }}</p>
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>
